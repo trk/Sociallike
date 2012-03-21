@@ -33,7 +33,7 @@ class Sociallike_Tags extends TagManager
 	/**
 	 * @usage :
 	 * 		<ion:sociallike>
-	 * 			<ion:google_plus size="null(for standart), small, medium, tall" annotation="null(for standart), none, inline" width="300" url="base_url" js="false" />
+	 * 			<ion:google_plus size="null(for standart), small, medium, tall" annotation="null(for standart), none, inline" width="300" url="base_url" js="true/false" />
 	 * 		</ion:sociallike>
 	 *	
 	 */
@@ -65,7 +65,7 @@ class Sociallike_Tags extends TagManager
 	/**
 	 * @usage :
 	 * 		<ion:sociallike>
-	 * 			<ion:facebook send="false" layout="button_count" width="450" show-faces="false" action="recommend" colorscheme="dark" js="false" />
+	 * 			<ion:facebook send="false" layout="button_count" width="450" show-faces="false" action="recommend" colorscheme="dark" js="true/false" />
 	 * 		</ion:sociallike>
 	 */
 	public static function facebook($tag) {
@@ -148,14 +148,42 @@ class Sociallike_Tags extends TagManager
 	/**
 	 * @usage :
 	 * 		<ion:sociallike>
-	 * 			<ion:twitter js="false" />
+	 * 			<ion:twitter data-via="your_twitter_name" data-text="Your page title" data-related="account1,account2,account3" data-count="vertical" data-size="" data-url="base_url" js="true/false" />
 	 * 		</ion:sociallike>
 	 */
 	public static function twitter($tag) {
 		
 		$url = (isset($tag->attr['url']) && $tag->attr['url'] == 'base_url') ? 'data-url="' . base_url() . '"' : '';
+		/**
+		 * Parameters for Via : If you want share via a twitter account type user name or leave it blank
+		 *		Screen name of the user to attribute the Tweet to
+		 */
+		$via = (isset($tag->attr['via']) && $tag->attr['via'] != '') ? ' data-via="' . $tag->attr['via'] . '"' : '';
 		
-		$twitter = '<a href="https://twitter.com/share" class="twitter-share-button" ' . $url . ' data-lang="' . self::$lang . '">Twitter</a>';
+		/**
+		 * Default Tweet text
+		 */
+		$text = (isset($tag->attr['text']) && $tag->attr['text'] != '') ? ' data-text="' . $tag->attr['text'] . '"' : '';
+		
+		/**
+		 * Parameters for Related : account1,account2,account3
+		 *		Related accounts
+		 **/
+		$related = (isset($tag->attr['related']) && $tag->attr['related'] != '') ? ' data-related="' . $tag->attr['related'] . '"' : '';
+		
+		/**
+		 * Parameters for Count : null(Default Style), none, horizontal, vertical
+		 *		Count box position
+		 **/
+		$count = (isset($tag->attr['count']) && $tag->attr['count'] != '') ? ' data-count="' . $tag->attr['count'] . '"' : '';
+		
+		/**
+		 * Parameters for Size : null(medium Default Style), large
+		 */
+		$size = (isset($tag->attr['size']) && $tag->attr['size'] != '') ? ' data-size="' . $tag->attr['size'] . '"' : '';
+		
+		$twitter = '<a href="https://twitter.com/share" class="twitter-share-button" ' . $via . $text . $related . $count . $size . $url . ' data-lang="' . self::$lang . '">Twitter</a>';
+
 		
 		$js = (isset($tag->attr['js']) && $tag->attr['js'] == 'false') ? FALSE : TRUE;
 		if($js === TRUE)
@@ -174,7 +202,7 @@ class Sociallike_Tags extends TagManager
 	/**
 	 * @usage :
 	 * 		<ion:sociallike>
-	 * 			<ion:js google_plus="true" facebook="true" twitter="true" />
+	 * 			<ion:js google_plus="true/false" facebook="true/false" twitter="true/false" />
 	 * 		</ion:sociallike>
 	 */
 	public static function js($tag) {
