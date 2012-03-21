@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<name>Sociallike</name>
+	<description>Like Buttons For Social Websites</description>
+	<uri_segment>sociallike</uri_segment>
+	<has_admin>true</has_admin>
+	<access_group>admins</access_group>
+</module>
