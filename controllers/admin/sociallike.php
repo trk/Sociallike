@@ -1,11 +1,5 @@
 <?php if( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-/**
-* Simpleform admin controller
-*
-* @author	Ionize Dev Team
-*
-*/
 class Sociallike extends Module_Admin 
 {
 	/**
@@ -34,5 +28,3 @@ class Sociallike extends Module_Admin
 
 }
 
-/* End of file simpleform.php */
-/* Location: /modules/Simpleform/controllers/admin/simpleform.php */

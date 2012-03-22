@@ -1,3 +1,3 @@
 <?php
-	$config['module_simpleform_name'] = "Sociallike";
+	$config['module_sociallike_name'] = "Sociallike";
 

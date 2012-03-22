@@ -216,35 +216,37 @@ class Sociallike_Tags extends TagManager
 		
 		$js = '';
 		
-		if($facebook === TRUE)
-			$js .= '<div id="fb-root"></div>';
+		if($google_plus != FALSE || $facebook != FALSE || $twitter != FALSE) {
+			if($facebook === TRUE)
+				$js .= '<div id="fb-root"></div>';
+				
+			$js .= '<script type="text/javascript">';
 			
-		$js .= '<script type="text/javascript">';
-		
-		if($google_plus === TRUE)
-			$js .= 'window.___gcfg = {lang: \'' . self::$lang . '\'};
-						(function() {
-							var po = document.createElement(\'script\'); po.type = \'text/javascript\'; po.async = true;
-							po.src = "https://apis.google.com/js/plusone.js";
-							var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(po, s);
-						})();';
-		if($facebook === TRUE)
-			$js .= '(function(d, s, id) {
-					  var js, fjs = d.getElementsByTagName(s)[0];
-						  if (d.getElementById(id)) return;
-						  js = d.createElement(s); js.id = id;
-						  js.src = "//connect.facebook.net/'. $fb_lang .'/all.js#xfbml=1";
-						  fjs.parentNode.insertBefore(js, fjs);
-						}(document, \'script\', \'facebook-jssdk\'));';
-		if($twitter === TRUE)
-			$js .= '!function(d,s,id){
-						var js,fjs=d.getElementsByTagName(s)[0];
-						if(!d.getElementById(id)){
-							js=d.createElement(s);
-							js.id=id;js.src="//platform.twitter.com/widgets.js";
-							fjs.parentNode.insertBefore(js,fjs);
-						}}(document,"script","twitter-wjs");';
-		$js .= '</script>';
+			if($google_plus === TRUE)
+				$js .= 'window.___gcfg = {lang: \'' . self::$lang . '\'};
+							(function() {
+								var po = document.createElement(\'script\'); po.type = \'text/javascript\'; po.async = true;
+								po.src = "https://apis.google.com/js/plusone.js";
+								var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(po, s);
+							})();';
+			if($facebook === TRUE)
+				$js .= '(function(d, s, id) {
+						  var js, fjs = d.getElementsByTagName(s)[0];
+							  if (d.getElementById(id)) return;
+							  js = d.createElement(s); js.id = id;
+							  js.src = "//connect.facebook.net/'. $fb_lang .'/all.js#xfbml=1";
+							  fjs.parentNode.insertBefore(js, fjs);
+							}(document, \'script\', \'facebook-jssdk\'));';
+			if($twitter === TRUE)
+				$js .= '!function(d,s,id){
+							var js,fjs=d.getElementsByTagName(s)[0];
+							if(!d.getElementById(id)){
+								js=d.createElement(s);
+								js.id=id;js.src="//platform.twitter.com/widgets.js";
+								fjs.parentNode.insertBefore(js,fjs);
+							}}(document,"script","twitter-wjs");';
+			$js .= '</script>';
+		}
 			
 		return $js;
 	}
