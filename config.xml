@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
 	<name>Sociallike</name>
-	<description>Like Buttons For Social Websites</description>
+	<description>Social Like Buttons For Your Website Websites  // Author : ukyo | web : http://www.6ve1.com</description>
 	<uri_segment>sociallike</uri_segment>
 	<has_admin>true</has_admin>
 	<access_group>admins</access_group>
